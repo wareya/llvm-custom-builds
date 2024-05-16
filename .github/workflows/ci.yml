@@ -147,8 +147,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: ${{ matrix.llvm_version }}
-          name: Release ${{ matrix.llvm_version }}
+          tag: ${{ matrix.llvm_version }}.extras
+          name: Release ${{ matrix.llvm_version }} with lldb and extras
           allowUpdates: true
           draft: false
           prerelease: false
