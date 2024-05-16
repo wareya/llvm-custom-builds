@@ -62,7 +62,7 @@ cmake \
   -G Ninja \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DCMAKE_INSTALL_PREFIX="/" \
-  -DLLVM_ENABLE_PROJECTS="clang;lld;lldb" \
+  -DLLVM_ENABLE_PROJECTS="clang;lld;lldb;clang-tools-extra" \
   -DLLVM_ENABLE_TERMINFO=OFF \
   -DLLVM_ENABLE_ZLIB=OFF \
   -DLLVM_INCLUDE_DOCS=OFF \
