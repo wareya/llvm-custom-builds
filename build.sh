@@ -62,7 +62,7 @@ cmake \
   -G Ninja \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
   -DCMAKE_INSTALL_PREFIX="/" \
-  -DLLVM_ENABLE_PROJECTS="clang;lld;lldb" \
+  -DLLVM_ENABLE_PROJECTS="clang;lld" \
   -DLLVM_ENABLE_TERMINFO=OFF \
   -DLLVM_ENABLE_ZLIB=OFF \
   -DLLVM_INCLUDE_DOCS=OFF \
@@ -77,11 +77,5 @@ cmake \
   ../llvm
 
 # Showtime!
-cmake --build . --config MinSizeRel
-DESTDIR=destdir cmake --install . --strip --config MinSizeRel
-
-# move usr/bin/* to bin/ or llvm-config will be broken
-if [ ! -d destdir/bin ];then
- mkdir destdir/bin
-fi
-mv destdir/usr/bin/* destdir/bin/
+cmake --build . --config Release
+cmake --install . --strip --config Release
