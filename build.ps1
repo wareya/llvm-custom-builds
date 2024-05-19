@@ -43,7 +43,7 @@ cmake `
   -G "Visual Studio 17 2022" `
   -DCMAKE_BUILD_TYPE=MinSizeRel `
   -DCMAKE_INSTALL_PREFIX=destdir `
-  -DLLVM_ENABLE_PROJECTS="clang;lld;lldb" `
+  -DLLVM_ENABLE_PROJECTS="clang;lld" `
   -DLLVM_ENABLE_TERMINFO=OFF `
   -DLLVM_ENABLE_ZLIB=OFF `
   -DLLVM_INCLUDE_DOCS=OFF `
