@@ -61,7 +61,7 @@ esac
 cmake \
   -G Ninja \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
-  -DCMAKE_INSTALL_PREFIX="/" \
+  -DCMAKE_INSTALL_PREFIX="$(pwd)/destdir" \
   -DLLVM_ENABLE_PROJECTS="clang;lld" \
   -DLLVM_ENABLE_TERMINFO=OFF \
   -DLLVM_ENABLE_ZLIB=OFF \
@@ -78,4 +78,4 @@ cmake \
 
 # Showtime!
 cmake --build . --config Release
-cmake --install . --strip --config Release
+cmake --install . --prefix "$(pwd)/destdir" --strip --config Release
