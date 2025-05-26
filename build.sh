@@ -61,21 +61,28 @@ esac
 cmake \
   -G Ninja \
   -DCMAKE_BUILD_TYPE=MinSizeRel \
-  -DCMAKE_INSTALL_PREFIX="$(pwd)/destdir" \
-  -DLLVM_ENABLE_PROJECTS="" \
-  -DLLVM_INCLUDE_TOOLS=OFF \
-  -DLLVM_INCLUDE_TESTS=OFF \
-  -DLLVM_INCLUDE_EXAMPLES=OFF \
-  -DLLVM_INCLUDE_UTILS=OFF \
-  -DLLVM_INCLUDE_DOCS=OFF \
-  -DLLVM_INCLUDE_GO_TESTS=OFF \
-  -DLLVM_ENABLE_ASSERTIONS=OFF \
+  -DCMAKE_INSTALL_PREFIX="destdir" \
+  -DLLVM_ENABLE_PROJECTS="clang;lld" \
   -DLLVM_ENABLE_TERMINFO=OFF \
   -DLLVM_ENABLE_ZLIB=OFF \
-  -DLLVM_BUILD_LLVM_DYLIB=OFF \
-  -DLLVM_TARGETS_TO_BUILD="host" \
+  -DLLVM_INCLUDE_DOCS=OFF \
+  -DLLVM_INCLUDE_EXAMPLES=OFF \
+  -DLLVM_INCLUDE_GO_TESTS=OFF \
+  -DLLVM_INCLUDE_TESTS=OFF \
+  -DLLVM_INCLUDE_TOOLS=ON \
+  -DLLVM_INCLUDE_UTILS=OFF \
+  -DLLVM_OPTIMIZED_TABLEGEN=ON \
+  "${CROSS_COMPILE}" \
+  "${CMAKE_ARGUMENTS}" \
   ../llvm
 
 # Showtime!
 cmake --build . --config Release
-cmake --install . --prefix "$(pwd)/destdir" --strip --config Release
+cmake --install . --strip --config Release
+
+# move usr/bin/* to bin/ or llvm-config will be broken
+# ?
+if [ ! -d destdir/bin ];then
+ mkdir destdir/bin
+fi
+mv destdir/usr/bin/* destdir/bin/
