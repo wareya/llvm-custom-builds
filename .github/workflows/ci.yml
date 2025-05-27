@@ -201,6 +201,16 @@ jobs:
           asset_name: llvm-darwin-amd64.tar.xz
           asset_content_type: application/gzip
 
+      - name: Upload Release Asset Darwin (ARM64)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: artifacts/darwin-aarch64-${{matrix.llvm_version}}/llvm.tar.xz
+          asset_name: llvm-darwin-aarch64.tar.xz
+          asset_content_type: application/gzip
+
       - name: Upload Release Asset Windows
         uses: actions/upload-release-asset@v1
         env:
@@ -209,4 +219,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: artifacts/windows-amd64-${{matrix.llvm_version}}/llvm.tar.xz
           asset_name: llvm-windows-amd64.tar.xz
+          asset_content_type: application/gzip
+
+      - name: Upload Release Asset Windows (ARM64)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: artifacts/windows-aarch64-${{matrix.llvm_version}}/llvm.tar.xz
+          asset_name: llvm-windows-aarch64.tar.xz
           asset_content_type: application/gzip
