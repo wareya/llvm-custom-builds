@@ -72,6 +72,7 @@ jobs:
           brew install ninja
       
       - name: Install `winget` on Windows ARM
+        if: startsWith(matrix.target.id, 'windows-aarch64')
         uses: Cyberboss/install-winget@v1
       
       - name: Install `ninja` on Windows ARM
