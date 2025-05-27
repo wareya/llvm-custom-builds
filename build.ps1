@@ -15,10 +15,18 @@ if ([string]::IsNullOrEmpty($LLVM_VERSION)) {
 	exit 1
 }
 
-# Shallow clone the LLVM project.
+# Download and extract the LLVM release branch as a zipball using tar.
 if (-not (Test-Path -Path "llvm-project" -PathType Container)) {
-    git clone --depth 1 --branch "release/$LLVM_VERSION" $env:LLVM_REPO_URL llvm-project
+    $zipUrl = "https://github.com/llvm/llvm-project/archive/refs/heads/release/$env:LLVM_VERSION.zip"
+    $zipPath = "$env:TEMP\llvm-project.zip"
+
+    Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
+
+    # Extract and rename the top-level directory to "llvm-project"
+    tar -xf $zipPath -C ./
+    Rename-Item -Path "llvm-project-release-$env:LLVM_VERSION" -NewName "llvm-project"
 }
+
 Set-Location llvm-project
 
 # Create a directory to build the project.
