@@ -42,7 +42,8 @@ $CMAKE_ARGUMENTS = ""
 $CROSS_COMPILE = ""
 
 # Run `cmake` to configure the project.
-cmake `
+cmake
+  -DCMAKE_CXX_FLAGS="/utf-8" `
   -G "Visual Studio 17 2022" `
   -DCMAKE_BUILD_TYPE=MinSizeRel `
   -DCMAKE_INSTALL_PREFIX=destdir `
@@ -61,7 +62,11 @@ cmake `
   ../llvm
 
 # Showtime!
-cmake --build . --config Release
+cmake --build . --config Release --target llvm-nm -- /m
+New-Item -ItemType Directory -Path "NATIVE/Release/bin" -Force | Out-Null
+Copy-Item "Release/bin/llvm-nm.exe" "NATIVE/Release/bin/llvm-nm.exe" -ErrorAction SilentlyContinue
+cmake --build . --config Release -- /m
+
 
 # Not using DESTDIR here, quote from
 # https://cmake.org/cmake/help/latest/envvar/DESTDIR.html
