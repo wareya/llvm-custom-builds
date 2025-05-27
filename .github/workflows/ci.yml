@@ -75,7 +75,7 @@ jobs:
         if: startsWith(matrix.target.id, 'windows-aarch64')
         shell: bash
         run: |
-          choco install ninja
+          winget install Ninja-build.Ninja
 
       - name: Build
         if: matrix.target.id != 'windows-amd64' && matrix.target.id != 'linux-aarch64' && matrix.target.id != 'linux-riscv64'
