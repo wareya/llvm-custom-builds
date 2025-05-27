@@ -73,11 +73,13 @@ jobs:
       
       - name: Install `winget` on Windows ARM
         if: startsWith(matrix.target.id, 'windows-aarch64')
-        uses: Cyberboss/install-winget@v1
+        shell: pwsh
+        run: |
+          Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
       
       - name: Install `ninja` on Windows ARM
         if: startsWith(matrix.target.id, 'windows-aarch64')
-        shell: bash
+        shell: pwsh
         run: |
           winget install Ninja-build.Ninja
 
@@ -101,8 +103,7 @@ jobs:
 
       - name: Build (Windows)
         if: matrix.target.id == 'windows-amd64'
-        shell: |
-          powershell -Command "& '{0}'"
+        shell: pwsh
         run: |
           ./build.ps1 ${{ matrix.llvm_version }} ${{ matrix.llvm_repo_url }}
 
