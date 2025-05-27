@@ -82,7 +82,7 @@ jobs:
           echo "$env:RUNNER_TEMP\ninja" >> $env:GITHUB_PATH
 
       - name: Build
-        if: matrix.target.id != 'windows-amd64' && matrix.target.id != 'linux-aarch64' && matrix.target.id != 'linux-riscv64'
+        if: matrix.target.id != 'windows-amd64' && matrix.target.id != 'windows-aarch64' && matrix.target.id != 'linux-aarch64' && matrix.target.id != 'linux-riscv64'
         shell: bash
         run: |
           ./build.sh ${{ matrix.llvm_version }} ${{ matrix.llvm_repo_url }}
@@ -100,7 +100,7 @@ jobs:
           ./build.sh ${{ matrix.llvm_version }} ${{ matrix.llvm_repo_url }} riscv64
 
       - name: Build (Windows)
-        if: matrix.target.id == 'windows-amd64'
+        if: matrix.target.id == 'windows-amd64' || matrix.target.id == 'windows-aarch64'
         shell: pwsh
         run: |
           ./build.ps1 ${{ matrix.llvm_version }} ${{ matrix.llvm_repo_url }}
