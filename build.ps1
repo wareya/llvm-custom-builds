@@ -42,7 +42,7 @@ $CMAKE_ARGUMENTS = ""
 $CROSS_COMPILE = ""
 
 # Run `cmake` to configure the project.
-cmake
+cmake `
   -DCMAKE_CXX_FLAGS="/utf-8" `
   -G "Visual Studio 17 2022" `
   -DCMAKE_BUILD_TYPE=MinSizeRel `
