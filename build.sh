@@ -20,17 +20,11 @@ then
   exit 1
 fi
 
-# Clone the LLVM project.
-if [ ! -d llvm-project ]
-then
-  git clone "$LLVM_REPO_URL" llvm-project
+# Shallow clone the LLVM project.
+if [ ! -d llvm-project ]; then
+  git clone --depth 1 --branch "release/$LLVM_VERSION" "$LLVM_REPO_URL" llvm-project
 fi
-
-
 cd llvm-project
-git fetch origin
-git checkout "release/$LLVM_VERSION"
-git reset --hard origin/"release/$LLVM_VERSION"
 
 # Create a directory to build the project.
 mkdir -p build
