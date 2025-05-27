@@ -16,15 +16,14 @@ if ([string]::IsNullOrEmpty($LLVM_VERSION)) {
 }
 
 # Download and extract the LLVM release branch as a zipball using tar.
-if (-not (Test-Path -Path "llvm-project" -PathType Container)) {
-    $zipUrl = "https://github.com/llvm/llvm-project/archive/refs/heads/release/$env:LLVM_VERSION.zip"
+if (-not (Test-Path -Path "llvm-project" -PathType Container) ) {
+    $zipUrl = "https://github.com/llvm/llvm-project/archive/refs/heads/release/$LLVM_VERSION.zip"
     $zipPath = "$env:TEMP\llvm-project.zip"
 
     Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
 
-    # Extract and rename the top-level directory to "llvm-project"
     tar -xf $zipPath -C ./
-    Rename-Item -Path "llvm-project-release-$env:LLVM_VERSION" -NewName "llvm-project"
+    Rename-Item -Path "llvm-project-release-$LLVM_VERSION" -NewName "llvm-project"
 }
 
 Set-Location llvm-project
