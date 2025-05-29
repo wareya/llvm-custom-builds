@@ -57,7 +57,7 @@ cmake `
   -DLLVM_INCLUDE_TOOLS=ON `
   -DLLVM_INCLUDE_UTILS=OFF `
   -DLLVM_OPTIMIZED_TABLEGEN=OFF `
-  -DLLVM_ENABLE_RUNTIMES="libc;pstl;libcxx;compiler-rt;openmp;llvm-libgcc;offload" `
+  -DLLVM_ENABLE_RUNTIMES="libc;pstl;libcxx;compiler-rt;openmp" `
   $CROSS_COMPILE `
   $CMAKE_ARGUMENTS `
   ../llvm
