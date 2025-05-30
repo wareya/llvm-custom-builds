@@ -1,8 +1,14 @@
-18.x release (llvm + clang) with all targets enabled:  https://github.com/wareya/llvm-custom-builds/releases/tag/18.x
+Builds of LLVM+Clang with all targets enabled. Which patch version was built is arbitrary. If it's too old, file an issue report and I'll do a rebuild.
 
-17.x release (llvm + clang) with all targets enabled: https://github.com/wareya/llvm-custom-builds/releases/tag/17.x
+20.x: https://github.com/wareya/llvm-custom-builds/releases/tag/20.x.includes
 
-16.x release (llvm + clang) with all targets enabled: https://github.com/wareya/llvm-custom-builds/releases/tag/16.x
+19.x: https://github.com/wareya/llvm-custom-builds/releases/tag/19.x.includes
+
+18.x: https://github.com/wareya/llvm-custom-builds/releases/tag/18.x
+
+17.x: https://github.com/wareya/llvm-custom-builds/releases/tag/17.x
+
+16.x: https://github.com/wareya/llvm-custom-builds/releases/tag/16.x
 
 FORK OF THE FOLLOWING
 
