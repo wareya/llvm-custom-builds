@@ -19,9 +19,6 @@ jobs:
           - id: 'linux-riscv64'
             # uses cross-compilation
             os: "ubuntu-latest"
-          - id: 'darwin-amd64'
-            os: 'macos-13'
-            tar_extra_args: ''
           - id: 'darwin-aarch64'
             os: 'macos-latest'
             tar_extra_args: ''
