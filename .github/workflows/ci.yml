@@ -188,16 +188,6 @@ jobs:
           asset_name: linux-riscv64.tar.xz
           asset_content_type: application/gzip
 
-      - name: Upload Release Asset Darwin
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: artifacts/darwin-amd64-${{matrix.llvm_version}}/llvm.tar.xz
-          asset_name: llvm-darwin-amd64.tar.xz
-          asset_content_type: application/gzip
-
       - name: Upload Release Asset Darwin (ARM64)
         uses: actions/upload-release-asset@v1
         env:
